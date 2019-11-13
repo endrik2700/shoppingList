@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+
+namespace ShoppingList
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hi please provide a list of food you want to be added to shopping list. " +
+                "Please separate these with a comma and a space");
+           string list = Console.ReadLine();
+           char[] separator = {' ', ' '  };
+           List<string> items = new List<string>();
+            items.Add(list.Split(separator,StringSplitOptions.RemoveEmptyEntries));
+         
+            int i = 0;
+            foreach (string item in list) { 
+                Console.WriteLine($"item[i]: {item}");
+                i++;
+            }
+            Console.WriteLine("Do you want to add or remove something or quit the app? Answers: yes, no, quit");
+            string input = Console.ReadLine().ToLower();
+            if (input == "yes") {
+                Console.WriteLine("Add your next item");
+                string newItem = Console.ReadLine();
+                
+            }
+
+            Console.ReadLine();
+     
+        }
+    }
+}
