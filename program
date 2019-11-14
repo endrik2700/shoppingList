@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ShoppingList
 {
@@ -7,28 +10,28 @@ namespace ShoppingList
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hi please provide a list of food you want to be added to shopping list. " +
+             Console.WriteLine("Hi please provide a list of food you want to be added to shopping list. " +
                 "Please separate these with a comma and a space");
            string list = Console.ReadLine();
            char[] separator = {' ', ' '  };
-           List<string> items = new List<string>();
-            items.Add(list.Split(separator,StringSplitOptions.RemoveEmptyEntries));
-         
-            int i = 0;
-            foreach (string item in list) { 
-                Console.WriteLine($"item[i]: {item}");
-                i++;
+           string [] items = new string [] {};
+           items = list.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string s in items) {
+                s.Replace(",","");
+                Console.WriteLine(s);
+                
             }
+            
             Console.WriteLine("Do you want to add or remove something or quit the app? Answers: yes, no, quit");
             string input = Console.ReadLine().ToLower();
             if (input == "yes") {
                 Console.WriteLine("Add your next item");
                 string newItem = Console.ReadLine();
+                items[items.Length] = newItem;
                 
             }
 
             Console.ReadLine();
-     
         }
     }
 }
