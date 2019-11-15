@@ -4,33 +4,80 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ShoppingList
 {
     class Program
     {
         static void Main(string[] args)
         {
-             Console.WriteLine("Hi please provide a list of food you want to be added to shopping list. " +
-                "Please separate these with a comma and a space");
-           string list = Console.ReadLine();
-           char[] separator = {' ', ' '  };
-           string [] items = new string [] {};
-           items = list.Split(separator, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string s in items) {
-                s.Replace(",","");
-                Console.WriteLine(s);
-                
-            }
+            Console.WriteLine("Hi please provide a list of food you want to be added to shopping list. " +
+               "Please separate these with a comma and a space");
+            string list = Console.ReadLine();
+            char[] separator = { ' ', ' ' };
+            string[] items = new string[] { };
+            items = list.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+            Console.Clear();
             
-            Console.WriteLine("Do you want to add or remove something or quit the app? Answers: yes, no, quit");
+            for (int i=0; i<items.Length;i++) {
+            
+            Console.WriteLine("item:"+" "+items[i]);
+
+            }
+               
+
+            Console.WriteLine("Do you want to add remove an item from an array something or quit the app? Answers: yes, no, quit");
             string input = Console.ReadLine().ToLower();
-            if (input == "yes") {
-                Console.WriteLine("Add your next item");
-                string newItem = Console.ReadLine();
-                items[items.Length] = newItem;
+            if (input == "yes")
+            {   
+                Console.WriteLine ("Do you want to add a new item?Answers: yes, no");
+                string userAnswer = Console.ReadLine();
+                   if (userAnswer.ToLower() =="yes" ) {
+
+                   Console.WriteLine("Add your next item");
+                   string newItem = Console.ReadLine();
+                   items[items.Length] = newItem;
+                   Console.Clear();
+                   for (int i = 0; i < items.Length; i++)
+                   {
+
+                       Console.WriteLine("item:" + " " + items[i]);
+
+                   }
+             } 
+                   else {
+                       Console.WriteLine("Pick the item to be removed from the shopping list");
+                     int   removablenr = int.Parse(Console.ReadLine())-1;
+                     items[removablenr] = "";
+                     Console.Clear();
+                     for (int i = 0; i < items.Length; i++)
+                     {
+
+                         Console.WriteLine("item:" + " " + items[i]);
+
+                     }
+                       
+                   }
+                     
+                
+
+            }
+            else if (input.ToLower() =="no") {
+
+                Console.WriteLine("Not gonna do anything then");
                 
             }
 
+            else if (input.ToLower() == "quit")
+            {
+                Console.Clear();
+                Console.WriteLine("Happy shopping!");
+            }
+
+            else
+            {
+
+            }
             Console.ReadLine();
         }
     }
